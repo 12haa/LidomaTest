@@ -11,6 +11,7 @@ import {
 } from "@/app/constants";
 import TextArea from "antd/es/input/TextArea";
 import Image from "next/image";
+import SwitchComponent from "@/app/(root)/_compoentns/SwitchComponent";
 
 interface ModalFormProps {
   modalOpen: boolean;
@@ -28,10 +29,9 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
         }
         open={modalOpen}
         onCancel={() => setModalOpen(false)}
-        centered
-        width={1000}
+        okText="Hi"
+        width={800}
         footer={null}
-        keyboard={true}
       >
         <Form layout="vertical" size="large">
           {/* Form Items */}
@@ -129,25 +129,73 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
               </Button>
             </div>
             <div>{/* TODO : THIS IS WHERE UPLOADED IMAGES SHOULD GO*/}</div>
-            <div className="flex items-center justify-between mt-10">
-              <div className="flex flex-col gap-4" dir="rtl">
-                <h1 className="text-lg font-semibold">
-                  آیا مالک اقامتگاه شخص دیگری است ؟
-                </h1>
-                <p className="text-gray-400">
-                  اگر مالک اقامتگاه نیستید لطفا این گزینه را انتخاب کنید
-                </p>
-              </div>
-              <div dir="ltr">
-                <Switch defaultChecked className="size-fit" />
-              </div>
-            </div>
-          </div>
-          <div className="mt-7 flex gap-5 justify-end">
-            <Button type="default">Cancel</Button>
 
-            <Button type="primary" htmlType="submit">
-              Apply
+            <SwitchComponent
+              title="آیا مالک اقامتگاه شخص دیگری است ؟"
+              subTitle="اگر مالک اقامتگاه نیستید لطفا این گزینه را انتخاب کنید"
+            />
+
+            <h1 className="pb-4 text-xl py-8"> نرخ گذاری و قیمت</h1>
+
+            <Form.Item name="area">
+              <div className="flex relative items-center justify-between">
+                <InputNumber
+                  placeholder="قیمت روزهای عادی"
+                  className="w-full"
+                  size="large"
+                />
+                <p className="absolute left-8 text-gray-500">تومان</p>
+              </div>
+            </Form.Item>
+            <Form.Item name="area">
+              <div className="flex relative items-center justify-between">
+                <InputNumber
+                  placeholder="قیمت آخر هفته"
+                  className="w-full"
+                  size="large"
+                />
+                <p className="absolute left-8 text-gray-500">تومان</p>
+              </div>
+            </Form.Item>
+            <Form.Item name="area">
+              <div
+                className="flex relative items-center justify-between "
+                dir="rtl"
+              >
+                <InputNumber
+                  placeholder="قیمت ایام پیک"
+                  className="w-full"
+                  size="large"
+                />
+                <p className="absolute left-8 text-gray-500">تومان</p>
+              </div>
+            </Form.Item>
+            <Form.Item name="area">
+              <div
+                className="flex relative items-center justify-between "
+                dir="rtl"
+              >
+                <InputNumber
+                  placeholder="نرخ هر نفر اضافه"
+                  className="w-full"
+                  size="large"
+                />
+                <p className="absolute left-8 text-gray-500">تومان</p>
+              </div>
+            </Form.Item>
+            <h1 className="pb-4 text-xl py-8"> قوانین و مقررات</h1>
+            <SwitchComponent title="استعمال دخانیات مجاز می باشد" />
+            <SwitchComponent title="ورود حیوان خانگی مجاز می باشد" />
+            <SwitchComponent title="برگزاری مراسم مجاز می باشد" />
+            <SwitchComponent title="همراه داشتن مدارک محرمیت الزامیست" />
+          </div>
+          <div className="mt-20 border-4 p-2 flex gap-5 justify-center w-full">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="px-60 rounded-xl py-4 w-full h-full"
+            >
+              <p className="w-full text-lg">ثبت اقامتگاه</p>
             </Button>
           </div>
         </Form>
