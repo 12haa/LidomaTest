@@ -15,6 +15,7 @@ import SwitchComponent from "@/app/(root)/_compoentns/SwitchComponent";
 import * as z from "zod";
 import FloatingLabelInput from "@/app/(root)/_compoentns/FloatingLableInput";
 import FloatingLabelSelect from "@/app/(root)/_compoentns/FloatingLabelSelect";
+import FloatingLabelTextarea from "@/app/(root)/_compoentns/FloatingLableTextArea";
 
 interface ModalFormProps {
   modalOpen: boolean;
@@ -105,12 +106,7 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
             <FloatingLabelInput label="استان" name="" />
             <FloatingLabelInput label="شهر" name="" />
 
-            <Form.Item
-              name="info"
-              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-            >
-              <TextArea placeholder="آدرس دقیق" className="p-3 rounded-xl" />
-            </Form.Item>
+            <FloatingLabelTextarea label="آدرس دقیق" name="" />
             <span className="   h-0.5 mb-10 mt-4  border-t-2"></span>
             <div className="  w-full  bg-gray-2 p-20  rounded-2xl mx-auto flex flex-col gap-8 items-center justify-center">
               <Image
