@@ -12,6 +12,7 @@ import {
 import TextArea from "antd/es/input/TextArea";
 import Image from "next/image";
 import SwitchComponent from "@/app/(root)/_compoentns/SwitchComponent";
+import * as z from "zod";
 
 interface ModalFormProps {
   modalOpen: boolean;
@@ -23,13 +24,12 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
     <>
       <Modal
         title={
-          <h1 className=" text-center text-primary text-xl font-semibold uppercase">
-            Apply filters
+          <h1 className=" mb-8 text-center text-primary md:text-2xl font-semibold ">
+            افزودن اقامتگاه
           </h1>
         }
         open={modalOpen}
         onCancel={() => setModalOpen(false)}
-        okText="Hi"
         width={800}
         footer={null}
       >
@@ -39,23 +39,32 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
             className="grid lg:grid-cols-1 md:grid-cols-1 grid-cols-1"
             dir="rtl"
           >
-            <Form.Item name="info">
+            <Form.Item
+              name="info"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <h1 className="pb-4 text-xl"> اطلاعات اقامتگاه</h1>
               <Input
                 placeholder="اطلاعات اقامتگاه"
-                className="p-3 rounded-xl"
+                className=" py-4 rounded-xl"
               />
             </Form.Item>
 
-            <Form.Item name="type">
+            <Form.Item
+              name="type"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <Select
                 options={propertyStatus}
-                className=" rounded-xl "
+                className=" rounded-xl  "
                 size="large"
                 placeholder="نوع اقامتگاه"
               />
             </Form.Item>
-            <Form.Item name="city ">
+            <Form.Item
+              name="city "
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <Select
                 options={propertyArea}
                 className="rounded-xl"
@@ -64,7 +73,10 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
               />
             </Form.Item>
 
-            <Form.Item name="area">
+            <Form.Item
+              name="area"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <div className="flex relative items-center justify-between">
                 <InputNumber
                   placeholder="مساحت کل زمین"
@@ -75,14 +87,20 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
               </div>
             </Form.Item>
 
-            <Form.Item name="capacity">
+            <Form.Item
+              name="capacity"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <h1 className="pb-4 text-xl"> ظرفیت اقامتگاه</h1>
               <Select
                 options={residenceCapacity}
                 placeholder="ظرفیت استاندارد"
               />
             </Form.Item>
-            <Form.Item name="parking">
+            <Form.Item
+              name="parking"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <Select
                 options={maxResidenceCapacity}
                 placeholder=" حداکثر ظرفیت "
@@ -94,42 +112,95 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                 placeholder=" تعداد تخت خواب "
               />
             </Form.Item>
-            <Form.Item name="parking">
+            <Form.Item
+              name="parking"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <Select
                 options={ResidenceBedLinenCount}
                 placeholder=" تعداد رخت خواب "
               />
             </Form.Item>
-            <Form.Item name="info">
+            <Form.Item
+              name="info"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <h1 className="pb-4 text-xl"> آدرس اقامتگاه</h1>
               <Input placeholder="استان" className="p-3 rounded-xl" />
             </Form.Item>
-            <Form.Item name="info">
+            <Form.Item
+              name="info"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <Input placeholder="شهر" className="p-3 rounded-xl" />
             </Form.Item>
-            <Form.Item name="info">
+            <Form.Item
+              name="info"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <TextArea placeholder="آدرس دقیق" className="p-3 rounded-xl" />
             </Form.Item>
-            <div className="border-2 bg-gray-2 p-10 rounded-2xl flex flex-col gap-8 items-center justify-center">
+            <div className="  w-full  bg-gray-2 p-20  rounded-2xl mx-auto flex flex-col gap-8 items-center justify-center">
               <Image
                 src="/icons/UploadImage.svg"
                 width={56}
                 height={56}
                 alt="Icon"
               />
-              <p className="text-lg font-semibold">
+              <p className="text-xl max-md:text-sm mx-auto font-semibold  items-center justify-center  ">
                 لطفاً تصاویر اقامتگاه خود را بارگذاری کنید
               </p>
               <Button
                 type="primary"
                 size="large"
-                className="mt-2  rounded-xl   "
+                className="mt-2  rounded-xl    "
               >
                 بارگذاری تصویر
               </Button>
             </div>
-            <div>{/* TODO : THIS IS WHERE UPLOADED IMAGES SHOULD GO*/}</div>
-
+            {[1, 2, 3].map((item, i) => (
+              <div
+                key={i}
+                className="flex w-[100%]  mx-auto  flex-col items-center justify-between  gap-2 mt-12 overflow-hidden rounded-2xl relative "
+              >
+                <div className="absolute  py-4 items-center justify-between px-2 w-full  flex  gap-4">
+                  <div className="flex gap-2 items-center justify-center ">
+                    <div className="rounded-full px-5 py-2.5 bg-white text-lg font-semibold">
+                      {i + 1}
+                    </div>
+                    {i === 0 ? (
+                      <p className="bg-white rounded-2xl p-2.5  px-3.5 text-center font-semibold">
+                        نصویر اصلی
+                      </p>
+                    ) : null}
+                  </div>
+                  <div className="rounded-full px-4 py-3.5  bg-red-1">
+                    <Image
+                      src="/icons/TrashIcon.svg"
+                      width={24}
+                      height={24}
+                      alt="trashIcon"
+                    />
+                  </div>
+                </div>
+                <Image
+                  className="w-full reounded-2xl"
+                  width={400}
+                  height={400}
+                  src="/images/House1.jpg"
+                  objectFit="cover"
+                  alt="House Images"
+                />
+                <div className=" absolute flex left-1 rounded-full px-4 py-3.5 bg-white text-lg font-semibold bottom-2">
+                  <Image
+                    src="/icons/Navigation.svg"
+                    alt=""
+                    height={24}
+                    width={24}
+                  />
+                </div>
+              </div>
+            ))}
             <SwitchComponent
               title="آیا مالک اقامتگاه شخص دیگری است ؟"
               subTitle="اگر مالک اقامتگاه نیستید لطفا این گزینه را انتخاب کنید"
@@ -137,7 +208,10 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
 
             <h1 className="pb-4 text-xl py-8"> نرخ گذاری و قیمت</h1>
 
-            <Form.Item name="area">
+            <Form.Item
+              name="area"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <div className="flex relative items-center justify-between">
                 <InputNumber
                   placeholder="قیمت روزهای عادی"
@@ -147,7 +221,10 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                 <p className="absolute left-8 text-gray-500">تومان</p>
               </div>
             </Form.Item>
-            <Form.Item name="area">
+            <Form.Item
+              name="area"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <div className="flex relative items-center justify-between">
                 <InputNumber
                   placeholder="قیمت آخر هفته"
@@ -157,7 +234,10 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                 <p className="absolute left-8 text-gray-500">تومان</p>
               </div>
             </Form.Item>
-            <Form.Item name="area">
+            <Form.Item
+              name="area"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <div
                 className="flex relative items-center justify-between "
                 dir="rtl"
@@ -170,7 +250,10 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                 <p className="absolute left-8 text-gray-500">تومان</p>
               </div>
             </Form.Item>
-            <Form.Item name="area">
+            <Form.Item
+              name="area"
+              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
+            >
               <div
                 className="flex relative items-center justify-between "
                 dir="rtl"
@@ -189,14 +272,17 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
             <SwitchComponent title="برگزاری مراسم مجاز می باشد" />
             <SwitchComponent title="همراه داشتن مدارک محرمیت الزامیست" />
           </div>
-          <div className="mt-20 border-4 p-2 flex gap-5 justify-center w-full">
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="px-60 rounded-xl py-4 w-full h-full"
-            >
-              <p className="w-full text-lg">ثبت اقامتگاه</p>
-            </Button>
+          <div className="flex flex-col mt-4 gap-6 ">
+            <span className="mx-auto w-[98%] h-1.5  mt-4 border-t-2"></span>
+            <div className="   flex gap-5 justify-center w-full">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className=" rounded-xl py-4 w-full h-full"
+              >
+                <p className="w-full text-lg">ثبت اقامتگاه</p>
+              </Button>
+            </div>
           </div>
         </Form>
       </Modal>

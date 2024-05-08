@@ -13,18 +13,25 @@ const ResidenceTab = () => {
   const pathname = usePathname();
   console.log(modalOpen);
   return (
-    <section className="flex flex-col w-full  items-center  md:items-end ">
-      <div className="flex   items-center  mt-4   gap-4 justify-between ">
-        <div className="flex    gap-2 mt-2  ">
+    <section className="flex flex-col w-full   items-center  md:items-end  ">
+      <div className="flex   items-center  gap-4 lg:gap-30      mt-4 md:w-full md:px-32 justify-between       ">
+        <div className="flex   mt-2    ">
           <Button
-            className="font text-md sm:text-sm text-blue-1  outline-none"
+            className="font text-md sm:text-sm text-blue-1 flex  gap-2   border-none "
+            type="default"
             onClick={() => setModalOpen((prevState) => !prevState)}
           >
             افزودن اقامتگاه
+            <Image
+              src={plus}
+              alt="home Icon"
+              width={16}
+              height={18}
+              className="mt-1"
+            />
           </Button>
-          <Image src={plus} alt="home Icon" width={18} height={18} />
         </div>
-        <div className=" md:gap-4 flex gap-3   ">
+        <div className=" md:gap-4 flex gap-3    ">
           <p className=" md:text-[20px]  font-semibold pt-1">
             لیست اقامتگاه های من
           </p>
@@ -32,7 +39,7 @@ const ResidenceTab = () => {
         </div>
       </div>
       {/*  residence tab items Start  */}
-      <div className="flex items-center md:justify-end justify-center  w-full mt-7 ">
+      <div className="flex items-center md:justify-end justify-center  w-full mt-7 md:px-24 lg:px-32 ">
         <div className=" w-48 flex flex-col gap-2 cursor-pointer md:w-48 ">
           <Link
             href="/residence/notavailable"
@@ -67,19 +74,6 @@ const ResidenceTab = () => {
       </div>
       <div>
         <ModalForm setModalOpen={setModalOpen} modalOpen={modalOpen} />
-        {/*<Modal*/}
-        {/*  title={*/}
-        {/*    <h1 className=" text-center text-primary text-xl font-semibold uppercase">*/}
-        {/*      Apply filters*/}
-        {/*    </h1>*/}
-        {/*  }*/}
-        {/*  open={modalOpen}*/}
-        {/*  onCancel={() => setModalOpen(false)}*/}
-        {/*  centered*/}
-        {/*  width={2000}*/}
-        {/*  footer={null}*/}
-        {/*  className="w-[2000px]"*/}
-        {/*></Modal>*/}
       </div>
     </section>
   );
