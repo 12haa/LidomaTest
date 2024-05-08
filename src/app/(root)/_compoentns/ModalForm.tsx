@@ -13,6 +13,8 @@ import TextArea from "antd/es/input/TextArea";
 import Image from "next/image";
 import SwitchComponent from "@/app/(root)/_compoentns/SwitchComponent";
 import * as z from "zod";
+import FloatingLabelInput from "@/app/(root)/_compoentns/FloatingLableInput";
+import FloatingLabelSelect from "@/app/(root)/_compoentns/FloatingLabelSelect";
 
 interface ModalFormProps {
   modalOpen: boolean;
@@ -42,39 +44,20 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
             className="grid lg:grid-cols-1 md:grid-cols-1 grid-cols-1"
             dir="rtl"
           >
-            <Form.Item
-              name="info"
-              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-            >
+            <div className="flex flex-col">
               <h1 className="pb-4 text-xl"> اطلاعات اقامتگاه</h1>
-              <Input
-                placeholder="اطلاعات اقامتگاه"
-                className=" py-4 rounded-xl"
-              />
-            </Form.Item>
-
-            <Form.Item
-              name="type"
-              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-            >
-              <Select
-                options={propertyStatus}
-                className=" rounded-xl  "
-                size="large"
-                placeholder="نوع اقامتگاه"
-              />
-            </Form.Item>
-            <Form.Item
-              name="city "
-              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-            >
-              <Select
-                options={propertyArea}
-                className="rounded-xl"
-                size="large"
-                placeholder="منطقه اقامتگاه"
-              />
-            </Form.Item>
+              <FloatingLabelInput label="نام اقامتگاه" name=" " />
+            </div>
+            <FloatingLabelSelect
+              label="نوع اقامتگاه"
+              name=""
+              options={propertyArea}
+            />
+            <FloatingLabelSelect
+              label="منطقه اقامتگاه"
+              name=""
+              options={propertyArea}
+            />
 
             <Form.Item
               name="area"
@@ -91,25 +74,17 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
             </Form.Item>
 
             <span className="   h-0.5 my-4  border-t-2"></span>
-            <Form.Item
-              name="capacity"
-              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-            >
-              <h1 className="pb-4 text-xl"> ظرفیت اقامتگاه</h1>
-              <Select
-                options={residenceCapacity}
-                placeholder="ظرفیت استاندارد"
-              />
-            </Form.Item>
-            <Form.Item
-              name="parking"
-              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-            >
-              <Select
-                options={maxResidenceCapacity}
-                placeholder=" حداکثر ظرفیت "
-              />
-            </Form.Item>
+            <h1 className="pb-4 text-xl"> ظرفیت اقامتگاه</h1>
+            <FloatingLabelSelect
+              label="ظرفیت اقامتگاه"
+              name=""
+              options={propertyArea}
+            />
+            <FloatingLabelSelect
+              label="حداکثر ظرفیت"
+              name=""
+              options={propertyArea}
+            />
             <Form.Item name="parking">
               <Select
                 options={ResidenceBedroomCount}
@@ -126,19 +101,9 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
               />
             </Form.Item>
             <span className="   h-0.5 my-4  border-t-2"></span>
-            <Form.Item
-              name="info"
-              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-            >
-              <h1 className="pb-4 text-xl"> آدرس اقامتگاه</h1>
-              <Input placeholder="استان" className="p-3 rounded-xl" />
-            </Form.Item>
-            <Form.Item
-              name="info"
-              rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-            >
-              <Input placeholder="شهر" className="p-3 rounded-xl" />
-            </Form.Item>
+            <h1 className="pb-4 text-xl"> آدرس اقامتگاه</h1>
+            <FloatingLabelInput label="استان" name="" />
+            <FloatingLabelInput label="شهر" name="" />
 
             <Form.Item
               name="info"
