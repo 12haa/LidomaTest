@@ -10,7 +10,6 @@ export default function HomeLayout({
     <main className="relative size-full  ">
       <div className="flex items-center justify-center p-4 border-b-2">
         <Navbar />
-        <span className="w-1 h-1 bg"></span>
       </div>
       <div className="relative flex sm:mx-auto">
         <ResidenceTab />

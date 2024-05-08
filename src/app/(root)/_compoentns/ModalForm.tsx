@@ -24,9 +24,12 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
     <>
       <Modal
         title={
-          <h1 className=" mb-8 text-center text-primary md:text-2xl font-semibold ">
-            افزودن اقامتگاه
-          </h1>
+          <div className="flex flex-col">
+            <h1 className=" mb-6 text-center text-primary text-xl md:text-2xl font-semibold ">
+              افزودن اقامتگاه
+            </h1>
+            <span className="   h-0.5 my-4  border-t-2"></span>
+          </div>
         }
         open={modalOpen}
         onCancel={() => setModalOpen(false)}
@@ -87,6 +90,7 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
               </div>
             </Form.Item>
 
+            <span className="   h-0.5 my-4  border-t-2"></span>
             <Form.Item
               name="capacity"
               rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
@@ -121,6 +125,7 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                 placeholder=" تعداد رخت خواب "
               />
             </Form.Item>
+            <span className="   h-0.5 my-4  border-t-2"></span>
             <Form.Item
               name="info"
               rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
@@ -134,12 +139,14 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
             >
               <Input placeholder="شهر" className="p-3 rounded-xl" />
             </Form.Item>
+
             <Form.Item
               name="info"
               rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
             >
               <TextArea placeholder="آدرس دقیق" className="p-3 rounded-xl" />
             </Form.Item>
+            <span className="   h-0.5 mb-10 mt-4  border-t-2"></span>
             <div className="  w-full  bg-gray-2 p-20  rounded-2xl mx-auto flex flex-col gap-8 items-center justify-center">
               <Image
                 src="/icons/UploadImage.svg"
@@ -174,6 +181,7 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                       </p>
                     ) : null}
                   </div>
+
                   <div className="rounded-full px-4 py-3.5  bg-red-1">
                     <Image
                       src="/icons/TrashIcon.svg"
@@ -201,11 +209,12 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                 </div>
               </div>
             ))}
+            <span className="   h-0.5 mt-10  border-t-2"></span>
             <SwitchComponent
               title="آیا مالک اقامتگاه شخص دیگری است ؟"
               subTitle="اگر مالک اقامتگاه نیستید لطفا این گزینه را انتخاب کنید"
             />
-
+            <span className="   h-0.5 mt-10  border-t-2"></span>
             <h1 className="pb-4 text-xl py-8"> نرخ گذاری و قیمت</h1>
 
             <Form.Item
@@ -266,6 +275,7 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                 <p className="absolute left-8 text-gray-500">تومان</p>
               </div>
             </Form.Item>
+            <span className="   h-0.5 mt-10  border-t-2"></span>
             <h1 className="pb-4 text-xl py-8"> قوانین و مقررات</h1>
             <SwitchComponent title="استعمال دخانیات مجاز می باشد" />
             <SwitchComponent title="ورود حیوان خانگی مجاز می باشد" />

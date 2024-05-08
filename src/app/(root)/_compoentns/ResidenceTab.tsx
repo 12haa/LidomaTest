@@ -14,14 +14,14 @@ const ResidenceTab = () => {
   console.log(modalOpen);
   return (
     <section className="flex flex-col w-full   items-center  md:items-end  ">
-      <div className="flex   items-center  gap-4 lg:gap-30      mt-4 md:w-full md:px-32 justify-between       ">
-        <div className="flex   mt-2    ">
+      <div className="flex   items-center  gap-4 lg:gap-30 w-full px-6      mt-4 md:w-full md:px-32 justify-between       ">
+        <div className="flex   mt-2  items-center justify-center      ">
           <Button
-            className="font text-md sm:text-sm text-blue-1 flex  gap-2   border-none "
+            className="font   sm:text-sm text-blue-1 flex  gap-2   border-none "
             type="default"
             onClick={() => setModalOpen((prevState) => !prevState)}
           >
-            افزودن اقامتگاه
+            <p className="text-[14px] font-semibold">افزودن اقامتگاه</p>
             <Image
               src={plus}
               alt="home Icon"
@@ -31,16 +31,16 @@ const ResidenceTab = () => {
             />
           </Button>
         </div>
-        <div className=" md:gap-4 flex gap-3    ">
-          <p className=" md:text-[20px]  font-semibold pt-1">
+        <div className=" md:gap-4 flex gap-3 md:pr-2   ">
+          <p className=" text-[20px]  font-semibold pt-1">
             لیست اقامتگاه های من
           </p>
           <Image src={residents} alt="homeIcon" width={28} height={28} />
         </div>
       </div>
       {/*  residence tab items Start  */}
-      <div className="flex items-center md:justify-end justify-center  w-full mt-7 md:px-24 lg:px-32 ">
-        <div className=" w-48 flex flex-col gap-2 cursor-pointer md:w-48 ">
+      <div className="flex items-center md:justify-end justify-center  w-full  mt-7 md:px-24 lg:px-32 ">
+        <div className=" w-52 flex flex-col gap-2 cursor-pointer   ">
           <Link
             href="/residence/notavailable"
             className={`flex items-center justify-center ${
@@ -50,7 +50,7 @@ const ResidenceTab = () => {
             غیرفعال (6)
           </Link>
           <span
-            className={`  h-0.5 rounded-t-xl  border-t-4 bg-blue-1  ${
+            className={`  h-0.5 rounded-t-xl  border-t-4 bg-blue-1  md:w-48 ${
               pathname.startsWith("/residence/notavailable") && "border-blue-1"
             } `}
           ></span>
@@ -66,7 +66,7 @@ const ResidenceTab = () => {
             فعال (15)
           </Link>
           <span
-            className={` w-48  h-0.5 rounded-t-xl  border-t-4  ${
+            className={` w-52  h-0.5 rounded-t-xl  border-t-4  md:w-48 ${
               pathname.startsWith("/residence/available") && "border-blue-1"
             }  `}
           ></span>
