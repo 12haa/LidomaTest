@@ -177,7 +177,7 @@ const ModalForm = ({ modalOpen, setModalOpen }: ModalFormProps) => {
                     </div>
                     {i === 0 ? (
                       <p className="bg-white rounded-2xl p-2.5  px-3.5 text-center font-semibold">
-                        نصویر اصلی
+                        تصویر اصلی
                       </p>
                     ) : null}
                   </div>
