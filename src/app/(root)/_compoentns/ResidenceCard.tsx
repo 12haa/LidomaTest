@@ -77,8 +77,8 @@ const ResidenceCard = () => {
           ) : (
             <div className="flex  gap-3 mx-auto  items-center  w-[95%] md:flex-col lg:flex-row center  ">
               <Button
-                className="rounded-3xl    bg-green-1 relative   mx-auto items-center gap-2 flex-1 max-lg:px-8
-                 lg:px-4 lg:py-7 flex justify-center text-white py-7 md:py-3"
+                className="rounded-3xl    bg-green-1 relative   mx-auto items-center gap-2 xl:w-[80%] max-lg:px-8 max-md:w-[80%]
+                 lg:px-4 md:w-[90%] lg:py-7 flex justify-center text-white  py-7"
                 type="primary"
               >
                 <Image
@@ -92,7 +92,7 @@ const ResidenceCard = () => {
                 </p>
               </Button>
               <Button
-                className="rounded-3xl     mx-auto items-center gap-2 px-6  flex justify-center lg:px-2 py-7 "
+                className="rounded-3xl md:w-[90%] xl:w-[37%] max-md:w-[35%]    mx-auto items-center gap-2 px-6  flex justify-center lg:px-2 py-7 "
                 type="default"
               >
                 <p className="font-sans text-lg mb-1 text-black font-semibold">
