@@ -1,0 +1,28 @@
+-- CreateTable
+CREATE TABLE "Residence" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "area" TEXT NOT NULL,
+    "isResidenceActive" BOOLEAN NOT NULL DEFAULT true,
+    "dailyBassesPrice" TEXT NOT NULL,
+    "isPetsAllowed" BOOLEAN DEFAULT false,
+    "isSmokingAllowed" BOOLEAN DEFAULT false,
+    "ownerShip" BOOLEAN DEFAULT false,
+    "paperIsWorkRequired" BOOLEAN DEFAULT false,
+    "partyAllowence" BOOLEAN DEFAULT false,
+    "ReisdenceImagePatch" TEXT NOT NULL,
+    "ReisdenceFilePatch" TEXT NOT NULL,
+    "peakBasesPrice" TEXT NOT NULL,
+    "pricePerExtraPerson" TEXT NOT NULL,
+    "residenceArea" TEXT NOT NULL,
+    "residenceBedCount" TEXT NOT NULL,
+    "residenceBedLinenCount" TEXT NOT NULL,
+    "residenceCity" TEXT NOT NULL,
+    "residenceMaxCapacity" TEXT NOT NULL,
+    "residenceName" TEXT NOT NULL,
+    "residenceNormalCapacity" TEXT NOT NULL,
+    "residenceProvince" TEXT NOT NULL,
+    "residenceType" TEXT NOT NULL,
+    "weeklyBasesPrice" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

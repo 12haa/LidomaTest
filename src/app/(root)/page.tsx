@@ -1,7 +1,5 @@
 import React from "react";
-import Image from "next/image";
-import residents from "../../../public/icons/residents.svg";
-import plus from "../../../public/icons/Plus.svg";
+
 
 const HomePage = () => {
   return (

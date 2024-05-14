@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import plus from "../../../../public/icons/Plus.svg";
 import residents from "../../../../public/icons/residents.svg";
@@ -10,8 +10,21 @@ import ModalForm from "@/app/(root)/_compoentns/ModalForm";
 
 const ResidenceTab = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [finalValues, setFinalValues] = useState({
+    basicInfo: {},
+    media: {
+      newlyUploadedFiles: [],
+      images: [],
+    },
+  });
+  const [tempFiles, setTempFiles] = useState<any[]>([]);
+
   const pathname = usePathname();
-  console.log(modalOpen);
+
+  // useEffect(() => {
+  //   console.log(finalValues, "Final Values From ResidenCeTab");
+  // }, [finalValues]);
+
   return (
     <section className="flex flex-col w-full   items-center  md:items-end   ">
       <div className="flex   items-center  gap-4 lg:gap-30 w-full max-md:px-4      mt-4 md:w-full md:px-20 lg:px-32   justify-between       ">
@@ -75,7 +88,14 @@ const ResidenceTab = () => {
         </div>
       </div>
       <div>
-        <ModalForm setModalOpen={setModalOpen} modalOpen={modalOpen} />
+        <ModalForm
+          setModalOpen={setModalOpen}
+          modalOpen={modalOpen}
+          finalValues={finalValues}
+          setFinalValues={setFinalValues}
+          tempFiles={tempFiles}
+          setTempFiles={setTempFiles}
+        />
       </div>
     </section>
   );

@@ -140,3 +140,13 @@ export const ResidenceBedLinenCount = [
     label: "5 ",
   },
 ];
+export const isResidenceActive = [
+  {
+    value: true,
+    label: "فعال",
+  },
+  {
+    value: false,
+    label: "غیر",
+  },
+];

@@ -2,19 +2,29 @@ import React from "react";
 import ResidenceCard from "@/app/(root)/_compoentns/ResidenceCard";
 import { Button } from "antd";
 import Image from "next/image";
+import db from "@/db/db";
 
-const AvailableResidences = () => {
+// async function getResidenceData() {
+//   try {
+//   } catch (err: any) {
+//     error: err.message;
+//   }
+// }
+const AvailableResidences = async () => {
+  // const residences = await getResidenceData();
+  const residences = await db.residence.findMany();
+
   return (
     <div
-      className="grid  px-2 md:pr-16 grid-cols-1 md:grid-cols-2    lg:grid-cols-3   items-center  mt-1   "
+      className="grid px-2 md:pr-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center mt-1 "
       dir="rtl"
     >
-      {[1, 2, 3, 4, 5].map((card, i) => (
-        <ResidenceCard key={i} />
+      {residences.map((residence, i) => (
+        <ResidenceCard key={residence.id} residence={residence} />
       ))}
-      <div className="p-4  md:hidden mt-4 w-full ">
+      <div className="p-4 md:hidden mt-4 w-full ">
         <Button
-          className="rounded-3xl  w-full sm:w-[70%]    mx-auto items-center gap-2 max-md:px-6  flex justify-center lg:px-2 py-7 "
+          className="rounded-3xl w-full sm:w-[70%] mx-auto items-center gap-2 max-md:px-6  flex justify-center lg:px-2 py-7 "
           type="default"
         >
           <p className="font-sans text-lg mb-1 text-black font-semibold">

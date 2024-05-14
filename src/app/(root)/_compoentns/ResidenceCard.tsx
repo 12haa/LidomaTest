@@ -5,8 +5,10 @@ import House1 from "/public/images/House1.jpg";
 
 import { Button } from "antd";
 import { usePathname } from "next/navigation";
+import { Residence } from "@prisma/client";
+import { json } from "node:stream/consumers";
 
-const ResidenceCard = () => {
+const ResidenceCard = ({ residence }: { residence: Residence }) => {
   const pathname = usePathname();
 
   return (
@@ -15,7 +17,7 @@ const ResidenceCard = () => {
         <div className="w-full relative ">
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10 rounded-3xl"></div>
           <Image
-            src={House1}
+            src={residence.imagePath}
             alt="house"
             className="rounded-3xl "
             width={480}
@@ -51,11 +53,11 @@ const ResidenceCard = () => {
           >
             <p className="text-white  font-sans font-semibold  max-md:text-lg text-md z-50  ">
               {" "}
-              ویلا سه خوابه استخردار لوکس در شیراز
+              {residence.residenceName}
             </p>
             <div className="rounded-full px-4 py-1 bg-gray-1 z-50  ">
               <p className="font-sans text-white text-sm font-extralight leading-8">
-                کد اقامتگاه : 158841
+                کد اقامتگاه : {residence.id}
               </p>
             </div>
           </div>
