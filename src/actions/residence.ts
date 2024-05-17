@@ -26,6 +26,8 @@ export async function AddResidence(residence: any, imageUrls: string) {
         imagePath: imageUrls,
       },
     });
+    revalidatePath("/residence/available");
+    revalidatePath("/residence/notavailable");
 
     return {
       data: residence,

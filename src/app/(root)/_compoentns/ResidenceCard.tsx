@@ -69,7 +69,7 @@ const ResidenceCard = ({ residence }: { residence: Residence }) => {
         <div className="flex w-full gap-2">
           {residence.isResidenceActive ? (
             <Button
-              className={`rounded-3xl flex-shrink relative  max-md:w-[95%] md:w-[92%] mx-auto items-center gap-2 px-32 flex justify-center py-7 ${
+              className={`rounded-3xl flex-shrink relative max-md:w-[95%] md:w-[92%] mx-auto items-center gap-2 px-32 flex justify-center py-7 ${
                 pathname.startsWith("/residence/edit-residence")
                   ? "hidden"
                   : "flex"
@@ -95,7 +95,7 @@ const ResidenceCard = ({ residence }: { residence: Residence }) => {
                  lg:px-4 md:w-[90%] lg:py-7 flex justify-center text-white py-7"
                 type="primary"
                 onClick={() => {
-                  changeResidenceActivationStatus(residence.id);
+                  changeResidenceActivationStatus(residence.id).then(r => );
                 }}
               >
                 <Image
