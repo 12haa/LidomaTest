@@ -18,7 +18,7 @@ const ResidenceCard = ({ residence }: { residence: Residence }) => {
   return (
     <div className=" flex mx-auto gap-4 flex-col">
       <div className="items-center flex relative flex-col w-full sm:max-w-fit md:max-w-fit mx-auto mt-2">
-        <div className="  w-full relative ">
+        <div className="w-full relative">
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10 rounded-3xl"></div>
           <img
             src={residence.imagePath}
@@ -30,7 +30,7 @@ const ResidenceCard = ({ residence }: { residence: Residence }) => {
         <div
           className={`top-7 rounded-full px-3.5 gap-2  py-5 ${
             residence.isResidenceActive ? "bg-green-1" : "bg-red-1"
-          }absolute items-center justify-between flex  h-[28px] right-8`}
+          } absolute items-center justify-between flex  h-[28px] right-8`}
         >
           <Image
             src={`${
