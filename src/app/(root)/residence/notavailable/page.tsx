@@ -1,15 +1,23 @@
 import React from "react";
 import ResidenceCard from "@/app/(root)/_compoentns/ResidenceCard";
+import db from "@/db/db";
 
-const NotAvailableResidences = () => {
+const NotAvailableResidences = async () => {
+  const residences = await db.residence.findMany({
+    where: {
+      isResidenceActive: false,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
   return (
     <div
-      className="grid  px-2 md:pr-14   grid-cols-1 md:grid-cols-2    lg:grid-cols-3   items-center  mt-1 "
+      className="grid px-2 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center mt-1"
       dir="rtl"
     >
-      {/*grid  px-2 md:pr-14   grid-cols-1 md:grid-cols-2    lg:grid-cols-3   items-center  mt-1  */}
-      {[1, 2, 3, 4, 5].map((card, i) => (
-        <ResidenceCard key={i} />
+      {residences.map((residence) => (
+        <ResidenceCard residence={residence} key={residence.id} />
       ))}
     </div>
   );

@@ -146,6 +146,21 @@
             </llm>
           </llm>
         </chat>
+        <chat>
+          <internalId value="7d1a375c-b1de-43f4-8edc-fd648e7ba832" />
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="hi" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-05-17T06:40:35.7108735" />
+        </chat>
       </list>
     </chats>
     <defaultLlm>
