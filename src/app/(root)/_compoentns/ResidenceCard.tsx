@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import House1 from "/public/images/House1.jpg";
 
-import { Button } from "antd";
+import { Button, message } from "antd";
 import { usePathname, useRouter } from "next/navigation";
 import { Residence } from "@prisma/client";
 import { json } from "node:stream/consumers";
@@ -88,14 +88,26 @@ const ResidenceCard = ({ residence }: { residence: Residence }) => {
             <div
               className={`flex  ${
                 pathname.startsWith("/residence/edit-residence") ? "hidden" : ""
-              } gap-3 mx-auto  items-center  w-[95%] md:flex-col lg:flex-row center`}
+              } gap-3 mx-auto  items-center  w-[95%]  lg:flex-row center`}
             >
               <Button
                 className="rounded-3xl bg-green-1 relative  mx-auto items-center gap-2 xl:w-[80%] max-lg:px-8 max-md:w-[80%]
                  lg:px-4 md:w-[90%] lg:py-7 flex justify-center text-white py-7"
                 type="primary"
-                onClick={() => {
-                  changeResidenceActivationStatus(residence.id).then(r => );
+                onClick={async () => {
+                  try {
+                    let response = null;
+                    response = changeResidenceActivationStatus(residence.id);
+                    if (await response) {
+                      return message.success(
+                        "Residence Activation Status Changed",
+                      );
+                    }
+                  } catch (err: any) {
+                    return {
+                      error: err.message,
+                    };
+                  }
                 }}
               >
                 <Image

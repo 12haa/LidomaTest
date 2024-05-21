@@ -51,7 +51,11 @@ export async function changeResidenceActivationStatus(id: string) {
     });
     revalidatePath("/residence/available");
     revalidatePath("/residence/notavailable");
-    return residence;
+
+    return {
+      data: residence,
+      message: "Residence Activated Successfully!",
+    };
   } catch (err: any) {
     return {
       error: err.message,

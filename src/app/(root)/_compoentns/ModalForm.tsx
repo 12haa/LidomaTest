@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Form,
@@ -20,11 +20,9 @@ import {
 
 import Image from "next/image";
 import { AddResidence, EditResidence } from "@/actions/residence";
-import { revalidatePath } from "next/cache";
 import { UploadFilesAdnReturnUrls } from "@/helpers/upload-media";
 import { useParams } from "next/navigation";
-
-// import {AddResidence} from "@/app/actions/residence";
+import CustomImageComponent from "@/app/(root)/_compoentns/CustomImageComponent";
 
 interface ModalFormProps {
   modalOpen: boolean;
@@ -72,7 +70,6 @@ const ModalForm = ({
       } else {
         response = await AddResidence(valuesToAddDb, imageUrls[0]);
       }
-      if (response.error) console.log(response.error, "im response.error");
       message.success(response.message);
     } catch (err: any) {
       return {
@@ -80,7 +77,13 @@ const ModalForm = ({
       };
     }
   };
-  console.log(finalValues, " temp files");
+  console.log(finalValues, "finalValues");
+  console.log(tempFiles, "tempFiles");
+
+  // Function To Remove Uploaded Images
+  const handleRemoveImage = (index: number) => {
+    setTempFiles((prevFiles: any) => prevFiles.filter((_, i) => i !== index));
+  };
 
   return (
     <Modal
@@ -227,8 +230,11 @@ const ModalForm = ({
               </p>
             </div>
             <Upload
-              listType="picture-circle"
+              accept="image/*"
+              showUploadList={false}
               multiple
+              fileList={finalValues.images}
+              disabled={tempFiles.length >= 5}
               beforeUpload={(file: any) => {
                 setTempFiles((prev: any) => [...prev, file]);
                 return false;
@@ -238,29 +244,32 @@ const ModalForm = ({
                   prev.filter((item: any) => item !== file),
                 );
               }}
+              className="mx-auto"
             >
               <Button
                 type="primary"
                 size="large"
-                className="mt-2 rounded-xl h-fit"
+                className="mt-2 rounded-xl h-fit p-3"
               >
                 بارگذاری تصویر
               </Button>
             </Upload>
+            <div className="mt-4"></div>
           </div>
-          <div>
+          <div className="flex flex-col items-center justify-center  mt-10">
             {tempFiles.map((file: any, index: number) => (
-              <img src={file.img} alt="" key={index} />
+              <div key={index} className=" relative mr-4 mb-4 w-full  ">
+                <CustomImageComponent
+                  file={file}
+                  index={index}
+                  onRemove={handleRemoveImage}
+                />
+              </div>
             ))}
           </div>
 
-          {/*TODO : USER'S UPLOADED IMAGES GO HERE*/}
-
           <span className="h-0.5 mt-10border-t-2"></span>
-          <Form.Item
-            name="ownerShip"
-            rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-          >
+          <Form.Item name="ownerShip">
             <div className="flex items-center justify-between mt-10">
               <div className="flex flex-col gap-4" dir="rtl">
                 <h1 className="text-lg font-semibold">
@@ -338,10 +347,7 @@ const ModalForm = ({
           </Form.Item>
           <span className="h-0.5 mt-10 border-t-2"></span>
           <h1 className="pb-4 text-xl py-8"> قوانین و مقررات</h1>
-          <Form.Item
-            name="isSmokingAllowed"
-            rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-          >
+          <Form.Item name="isSmokingAllowed">
             <div className="flex items-center justify-between mt-10">
               <div className="flex flex-col gap-4" dir="rtl">
                 <h1 className="text-lg font-semibold">
@@ -365,10 +371,7 @@ const ModalForm = ({
               </div>
             </div>
           </Form.Item>
-          <Form.Item
-            name="partyAllowence"
-            rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-          >
+          <Form.Item name="partyAllowence">
             <div className="flex items-center justify-between mt-10">
               <div className="flex flex-col gap-4" dir="rtl">
                 <h1 className="text-lg font-semibold">
@@ -380,11 +383,7 @@ const ModalForm = ({
               </div>
             </div>
           </Form.Item>
-          <Form.Item
-            name="paperIsWorkRequired"
-            valuePropName="checked"
-            rules={[{ required: true, message: "نمیتواند خالی باشد" }]}
-          >
+          <Form.Item name="paperIsWorkRequired" valuePropName="checked">
             <div className="flex items-center justify-between mt-10">
               <div className="flex flex-col gap-4" dir="rtl">
                 <h1 className="text-lg font-semibold">

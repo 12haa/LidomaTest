@@ -15,6 +15,7 @@ const EditResidencePage = async ({ params }: EditResidencePageParams) => {
       id: params.id,
     },
   });
+
   return (
     <div className="items-center flex-col">
       <ResidenceCard residence={residences!} />
