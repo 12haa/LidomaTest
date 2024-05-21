@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Form,
@@ -46,6 +46,12 @@ const ModalForm = ({
   initialValues,
 }: ModalFormProps) => {
   const { id }: any = useParams();
+
+  const [isSmokingAllowed, setIsSmokingAllowed] = useState(false);
+  const [isPetsAllowed, setIsPetsAllowed] = useState(false);
+  const [partyAllowence, setPartyAllowence] = useState(false);
+  const [paperIsWorkRequired, setPaperIsWorkRequired] = useState(false);
+  const [ownerShip, setOwnerShip] = useState(false);
   const onFinish = async (values: any) => {
     try {
       setFinalValues({
@@ -53,16 +59,26 @@ const ModalForm = ({
         basicInfo: values,
         media: { newlyUploadedFiles: tempFiles },
       });
-      const tempFinalValues = { ...finalValues, basicInfo: values };
+      const tempFinalValues = {
+        ...finalValues,
+        basicInfo: values,
+      };
       const tempMedia = tempFinalValues.media;
       tempMedia.images = await UploadFilesAdnReturnUrls(
         tempMedia.newlyUploadedFiles,
       );
+      console.log(tempFinalValues, "tempFinalValues");
       tempFinalValues.media = tempMedia;
       const valuesToAddDb = {
         ...tempFinalValues.basicInfo,
+        isSmokingAllowed,
+        ownerShip,
+        isPetsAllowed,
+        partyAllowence,
+        paperIsWorkRequired,
         images: tempFinalValues.media?.images,
       };
+      console.log(valuesToAddDb, "valuesToAddDb");
       const imageUrls = valuesToAddDb.images;
       let response = null;
       if (isEdit) {
@@ -77,12 +93,12 @@ const ModalForm = ({
       };
     }
   };
-  console.log(finalValues, "finalValues");
-  console.log(tempFiles, "tempFiles");
 
   // Function To Remove Uploaded Images
   const handleRemoveImage = (index: number) => {
-    setTempFiles((prevFiles: any) => prevFiles.filter((_, i) => i !== index));
+    setTempFiles((prevFiles: any) =>
+      prevFiles.filter((_: any, i: number) => i !== index),
+    );
   };
 
   return (
@@ -280,7 +296,11 @@ const ModalForm = ({
                 </p>
               </div>
               <div dir="ltr">
-                <Switch defaultChecked className="size-fit" />
+                <Switch
+                  className="size-fit"
+                  checked={ownerShip}
+                  onChange={(checked) => setOwnerShip(checked)}
+                />
               </div>
             </div>
           </Form.Item>
@@ -347,7 +367,7 @@ const ModalForm = ({
           </Form.Item>
           <span className="h-0.5 mt-10 border-t-2"></span>
           <h1 className="pb-4 text-xl py-8"> قوانین و مقررات</h1>
-          <Form.Item name="isSmokingAllowed">
+          <Form.Item name="isSmokingAllowed" valuePropName="checked">
             <div className="flex items-center justify-between mt-10">
               <div className="flex flex-col gap-4" dir="rtl">
                 <h1 className="text-lg font-semibold">
@@ -355,7 +375,11 @@ const ModalForm = ({
                 </h1>
               </div>
               <div dir="ltr">
-                <Switch defaultChecked className="size-fit" />
+                <Switch
+                  className="size-fit"
+                  checked={isSmokingAllowed}
+                  onChange={(checked) => setIsSmokingAllowed(checked)}
+                />
               </div>
             </div>
           </Form.Item>
@@ -367,11 +391,16 @@ const ModalForm = ({
                 </h1>
               </div>
               <div dir="ltr">
-                <Switch defaultChecked className="size-fit" />
+                <Switch
+                  className="size-fit"
+                  checked={isPetsAllowed}
+                  onChange={(checked) => setIsPetsAllowed(checked)}
+                />
               </div>
             </div>
           </Form.Item>
-          <Form.Item name="partyAllowence">
+
+          <Form.Item name="partyAllowence" valuePropName="checked">
             <div className="flex items-center justify-between mt-10">
               <div className="flex flex-col gap-4" dir="rtl">
                 <h1 className="text-lg font-semibold">
@@ -379,7 +408,11 @@ const ModalForm = ({
                 </h1>
               </div>
               <div dir="ltr">
-                <Switch defaultChecked className="size-fit" />
+                <Switch
+                  className="size-fit"
+                  checked={partyAllowence}
+                  onChange={(checked) => setPartyAllowence(checked)}
+                />
               </div>
             </div>
           </Form.Item>
@@ -391,7 +424,11 @@ const ModalForm = ({
                 </h1>
               </div>
               <div dir="ltr">
-                <Switch defaultChecked className="size-fit" />
+                <Switch
+                  className="size-fit"
+                  checked={paperIsWorkRequired}
+                  onChange={(checked) => setPaperIsWorkRequired(checked)}
+                />
               </div>
             </div>
           </Form.Item>

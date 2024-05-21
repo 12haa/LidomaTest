@@ -12,11 +12,11 @@ model Residence {
   area                    String
   isResidenceActive       Boolean
   dailyBassesPrice        String
-  isPetsAllowed           Boolean? @default(false)
-  isSmokingAllowed        Boolean? @default(false)
-  ownerShip               Boolean? @default(false)
-  paperIsWorkRequired     Boolean? @default(false)
-  partyAllowence          Boolean? @default(false)
+  isPetsAllowed           Boolean
+  isSmokingAllowed        Boolean
+  ownerShip               Boolean
+  paperIsWorkRequired     Boolean
+  partyAllowence          Boolean
   peakBasesPrice          String
   pricePerExtraPerson     String
   residenceArea           String

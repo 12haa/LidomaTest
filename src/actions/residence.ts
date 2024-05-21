@@ -24,6 +24,11 @@ export async function AddResidence(residence: any, imageUrls: string) {
         weeklyBasesPrice: residence.weeklyBasesPrice,
         isResidenceActive: residence.isResidenceActive,
         imagePath: imageUrls,
+        isPetsAllowed: residence.isPetsAllowed,
+        isSmokingAllowed: residence.isSmokingAllowed,
+        ownerShip: residence.ownerShip,
+        paperIsWorkRequired: residence.paperIsWorkRequired,
+        partyAllowence: residence.partyAllowence,
       },
     });
     revalidatePath("/residence/available");
@@ -70,7 +75,7 @@ export async function EditResidence(residence: any, id: string) {
         id: id,
       },
       data: {
-        area: residence.area,
+        area: residence.residenceArea,
         dailyBassesPrice: residence.dailyBassesPrice,
         peakBasesPrice: residence.peakBasesPrice,
         pricePerExtraPerson: residence.pricePerExtraPerson,
@@ -86,8 +91,11 @@ export async function EditResidence(residence: any, id: string) {
         residenceType: residence.residenceType,
         weeklyBasesPrice: residence.weeklyBasesPrice,
         isResidenceActive: residence.isResidenceActive,
-        createdAt: residence.createdAt,
-        updatedAt: residence.updatedAt,
+        isPetsAllowed: residence.isPetsAllowed,
+        isSmokingAllowed: residence.isSmokingAllowed,
+        ownerShip: residence.ownerShip,
+        paperIsWorkRequired: residence.paperIsWorkRequired,
+        partyAllowence: residence.partyAllowence,
       },
     });
     revalidatePath("/residence/available");

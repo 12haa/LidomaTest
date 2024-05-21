@@ -11,7 +11,6 @@ const CustomImageComponent = ({
   index: number;
   onRemove: (index: number) => void;
 }) => {
-  console.log(file, "im file");
   return (
     <div className="relative flex flex-col items-center justify-center w-full h-full">
       <Image
