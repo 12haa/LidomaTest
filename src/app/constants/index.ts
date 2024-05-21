@@ -147,6 +147,6 @@ export const isResidenceActive = [
   },
   {
     value: false,
-    label: "غیر",
+    label: "غیر فعال",
   },
 ];

@@ -79,6 +79,8 @@ const ModalForm = ({
         images: tempFinalValues.media?.images,
       };
       console.log(valuesToAddDb, "valuesToAddDb");
+      console.log(finalValues, "finalValues");
+      console.log(initialValues, "Initial values");
       const imageUrls = valuesToAddDb.images;
       let response = null;
       if (isEdit) {
@@ -116,7 +118,11 @@ const ModalForm = ({
       width={800}
       footer={null}
     >
-      <Form onFinish={onFinish} initialValues={finalValues.basicInfo}>
+      <Form
+        onFinish={onFinish}
+        initialValues={finalValues.basicInfo}
+        layout="vertical"
+      >
         {/* Form Items */}
         <div
           className="grid lg:grid-cols-1 md:grid-cols-1 grid-cols-1"
