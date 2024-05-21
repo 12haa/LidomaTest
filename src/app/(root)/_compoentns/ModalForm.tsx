@@ -442,7 +442,9 @@ const ModalForm = ({
                 htmlType="submit"
                 className="bg-primary rounded-xl py-4 px-80 h-full"
               >
-                <p className="w-full text-lg">ثبت اقامتگاه</p>
+                <p className="w-full text-lg">
+                  {isEdit ? "ویرایش اقامتگاه" : "ثبت اقامتگاه"}
+                </p>
               </Button>
             </Form.Item>
           </div>
