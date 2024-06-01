@@ -15,6 +15,9 @@ export default function HomeLayout({
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const pathname = usePathname();
+  useEffect(() => {
+    router.push("/residence");
+  }, []);
 
   return (
     <main className="size-full  mt-1 flex flex-col">

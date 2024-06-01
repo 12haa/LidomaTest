@@ -15,10 +15,10 @@ const CustomImageComponent = ({
     <div className="relative flex flex-col items-center justify-center w-full h-full ">
       <Image
         src={URL.createObjectURL(file)}
-        width={600}
-        height={600}
+        width={300}
+        height={300}
         alt={`Uploaded image ${index}`}
-        className="rounded-2xl w-full h-full "
+        className="rounded-2xl w-full h-full object-cover"
       />
       <div className="absolute top-3 flex items-center justify-between w-full px-4">
         <div className="flex gap-2 items-center justify-evenly">

@@ -17,7 +17,6 @@ import {
   ResidenceBedroomCount,
   residenceCapacity,
 } from "@/app/constants";
-
 import Image from "next/image";
 import { AddResidence, EditResidence } from "@/actions/residence";
 import { UploadFilesAdnReturnUrls } from "@/helpers/upload-media";
@@ -46,15 +45,12 @@ const ModalForm = ({
   initialValues,
 }: ModalFormProps) => {
   const { id }: any = useParams();
-
   const [isSmokingAllowed, setIsSmokingAllowed] = useState(false);
   const [isPetsAllowed, setIsPetsAllowed] = useState(false);
   const [partyAllowence, setPartyAllowence] = useState(false);
   const [paperIsWorkRequired, setPaperIsWorkRequired] = useState(false);
   const [ownerShip, setOwnerShip] = useState(false);
   const onFinish = async (values: any) => {
-    console.log(initialValues, "initialValues");
-    console.log(finalValues, "Final values");
     try {
       setFinalValues({
         ...finalValues,
@@ -80,16 +76,16 @@ const ModalForm = ({
         paperIsWorkRequired,
         images: tempFinalValues.media?.images,
       };
-
-      console.log(finalValues, "finalValues");
-      console.log(initialValues, "Initial values");
       const imageUrls = valuesToAddDb.images;
       let response = null;
       if (isEdit) {
         response = await EditResidence(valuesToAddDb, id);
+        if (!response.error) setModalOpen(false);
       } else {
         response = await AddResidence(valuesToAddDb, imageUrls[0]);
+        if (!response.error) setModalOpen(false);
       }
+
       message.success(response.message);
     } catch (err: any) {
       return {
@@ -97,14 +93,12 @@ const ModalForm = ({
       };
     }
   };
-
   // Function To Remove Uploaded Images
   const handleRemoveImage = (index: number) => {
     setTempFiles((prevFiles: any) =>
       prevFiles.filter((_: any, i: number) => i !== index),
     );
   };
-
   return (
     <Modal
       title={
@@ -461,5 +455,4 @@ const ModalForm = ({
     </Modal>
   );
 };
-
 export default ModalForm;
