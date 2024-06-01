@@ -202,6 +202,65 @@
             </llm>
           </llm>
         </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="77774e1f-3db3-4fb2-9075-e1f287856579" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="6c0ebfe0-c4fb-469c-85b9-db9a06de1904" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="0ad56118-91c1-448e-9473-b2c6403c7e8d" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="9bd2505e-4b3b-467e-a7a1-7fd95f59a267" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="2efc2fd4-8f2e-47c9-b931-ce4d4163790a" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+        <chat>
+          <accountId value="VXNlcjoxNzAzNDM=" />
+          <internalId value="b39960b2-4067-4bb3-8bb3-3fb5fb5c2b15" />
+        </chat>
       </list>
     </chats>
     <defaultLlm>

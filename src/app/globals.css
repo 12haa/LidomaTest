@@ -6,5 +6,11 @@
     background: rgb(1,1,1);
     background: linear-gradient(90deg, rgba(1,1,1,1) 7%, rgba(255,255,255,1) 88%);
 }
+.ant-input-number .ant-input-number-handler-wrap .ant-input-number-handler {
+    display: none;
 
-
+}
+.ant-input-number-handler-wrap .ant-input-number-handler-up-inner,
+.ant-input-number-handler-wrap .ant-input-number-handler-down-inner {
+    display: none;
+}

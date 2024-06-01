@@ -53,6 +53,8 @@ const ModalForm = ({
   const [paperIsWorkRequired, setPaperIsWorkRequired] = useState(false);
   const [ownerShip, setOwnerShip] = useState(false);
   const onFinish = async (values: any) => {
+    console.log(initialValues, "initialValues");
+    console.log(finalValues, "Final values");
     try {
       setFinalValues({
         ...finalValues,
@@ -78,7 +80,7 @@ const ModalForm = ({
         paperIsWorkRequired,
         images: tempFinalValues.media?.images,
       };
-      console.log(valuesToAddDb, "valuesToAddDb");
+
       console.log(finalValues, "finalValues");
       console.log(initialValues, "Initial values");
       const imageUrls = valuesToAddDb.images;
@@ -177,7 +179,7 @@ const ModalForm = ({
                 className="w-full"
                 size="large"
               />
-              <p className="absolute left-7 justify-center items-center text-gray-500">
+              <p className="absolute left-2 justify-center items-center text-gray-500">
                 متر مربع
               </p>
             </div>
@@ -240,14 +242,14 @@ const ModalForm = ({
           </Form.Item>
           <span className="h-0.5 mb-10 mt-4 border-t-2"></span>
           <div className=" w-full relative bg-gray-200 p-20 rounded-2xl mx-auto flex flex-col gap-8 items-center justify-center">
-            <div className="bg-gray-200 p-7 rounded-2xl mx-auto flex flex-col gap-8 items-center justify-center">
+            <div className="bg-gray-200 p-7 rounded-2xl mx-auto flex flex-col gap-8 items-center justify-center ">
               <Image
                 src="/icons/UploadImage.svg"
                 width={56}
                 height={56}
                 alt="Icon"
               />
-              <p className="text-xl max-md:text-sm mx-auto font-semibold items-center justify-center">
+              <p className="text-[clamp(12px, 2vw, 18px)] max-md:text-[13px] w-full mx-auto font-semibold items-center justify-center">
                 لطفاً تصاویر اقامتگاه خود را بارگذاری کنید
               </p>
             </div>
@@ -323,7 +325,7 @@ const ModalForm = ({
                 className="w-full"
                 size="large"
               />
-              <p className="absolute left-8 text-gray-500">تومان</p>
+              <p className="absolute left-2 text-gray-500">تومان</p>
             </div>
           </Form.Item>
           <Form.Item
@@ -336,7 +338,7 @@ const ModalForm = ({
                 className="w-full"
                 size="large"
               />
-              <p className="absolute left-8 text-gray-500">تومان</p>
+              <p className="absolute left-2 text-gray-500">تومان</p>
             </div>
           </Form.Item>
           <Form.Item
@@ -352,7 +354,7 @@ const ModalForm = ({
                 className="w-full"
                 size="large"
               />
-              <p className="absolute left-8 text-gray-500">تومان</p>
+              <p className="absolute left-2 text-gray-500">تومان</p>
             </div>
           </Form.Item>
           <Form.Item
@@ -368,7 +370,7 @@ const ModalForm = ({
                 className="w-full"
                 size="large"
               />
-              <p className="absolute left-8 text-gray-500">تومان</p>
+              <p className="absolute left-2 text-gray-500">تومان</p>
             </div>
           </Form.Item>
           <span className="h-0.5 mt-10 border-t-2"></span>
@@ -442,11 +444,11 @@ const ModalForm = ({
         <div className="flex flex-col mt-4 gap-6">
           <span className="mx-auto w-[98%] h-1.5 mt-4 border-t-2"></span>
           <div className="flex gap-5 justify-center w-full">
-            <Form.Item>
+            <Form.Item className="border-2 w-full items-center justify-center">
               <Button
                 type="primary"
                 htmlType="submit"
-                className="bg-primary rounded-xl py-4 px-80 h-full"
+                className="bg-primary rounded-xl py-4 w-full h-full"
               >
                 <p className="w-full text-lg">
                   {isEdit ? "ویرایش اقامتگاه" : "ثبت اقامتگاه"}

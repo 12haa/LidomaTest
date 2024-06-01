@@ -18,9 +18,11 @@ const SearchPage = async ({
 
   return (
     <div className="items-center mt-4 mx-auto flex gap-20">
-      {residence.map((res) => (
-        <ResidenceCard residence={res} key={res.id} />
-      ))}
+      {residence.length > 0 ? (
+        residence.map((res) => <ResidenceCard residence={res} key={res.id} />)
+      ) : (
+        <p>No Residence Found</p>
+      )}
     </div>
   );
 };

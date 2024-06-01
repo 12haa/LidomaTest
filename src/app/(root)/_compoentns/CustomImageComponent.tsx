@@ -12,7 +12,7 @@ const CustomImageComponent = ({
   onRemove: (index: number) => void;
 }) => {
   return (
-    <div className="relative flex flex-col items-center justify-center w-full h-full">
+    <div className="relative flex flex-col items-center justify-center w-full h-full ">
       <Image
         src={URL.createObjectURL(file)}
         width={600}
